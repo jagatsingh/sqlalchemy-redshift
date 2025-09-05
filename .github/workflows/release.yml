@@ -36,7 +36,7 @@ jobs:
         enable-cache: true
 
     - name: Install build dependencies
-      run: uv sync --dev
+      run: uv sync --dev --no-lock
 
     - name: Build package
       run: uv build

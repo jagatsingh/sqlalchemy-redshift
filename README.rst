@@ -3,6 +3,8 @@ sqlalchemy-redshift
 
 Amazon Redshift dialect for SQLAlchemy.
 
+NOTE: This has been updated for SQLAlchemy 2.X and uses latest Python version. See the local release in this Git repo.
+
 Installation
 ------------
 

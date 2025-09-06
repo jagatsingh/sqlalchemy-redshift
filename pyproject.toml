@@ -1,0 +1,92 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sqlalchemy2-redshift"
+version = "0.8.15.dev0"
+description = "Amazon Redshift Dialect for sqlalchemy"
+readme = {file = "README.rst", content-type = "text/x-rst"}
+license = {text = "MIT"}
+authors = [
+    {name = "Matt George", email = "mgeorge@gmail.com"},
+]
+maintainers = [
+    {name = "Thomas Grainger", email = "sqlalchemy-redshift@graingert.co.uk"},
+]
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "SQLAlchemy>=2.0.43",
+    "packaging>=20.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/sqlalchemy-redshift/sqlalchemy-redshift"
+Repository = "https://github.com/sqlalchemy-redshift/sqlalchemy-redshift"
+
+[project.entry-points."sqlalchemy.dialects"]
+redshift = "sqlalchemy_redshift.dialect:RedshiftDialect_psycopg2"
+"redshift.psycopg2" = "sqlalchemy_redshift.dialect:RedshiftDialect_psycopg2"
+"redshift.psycopg2cffi" = "sqlalchemy_redshift.dialect:RedshiftDialect_psycopg2cffi"
+"redshift.redshift_connector" = "sqlalchemy_redshift.dialect:RedshiftDialect_redshift_connector"
+
+[tool.setuptools.packages.find]
+include = ["sqlalchemy_redshift*", "redshift_sqlalchemy*"]
+
+[tool.setuptools.package-data]
+sqlalchemy_redshift = ["redshift-ca-bundle.crt"]
+
+[project.optional-dependencies]
+dev = [
+    "alembic>=1.13.0",
+    "packaging>=20.0",
+    "psycopg2>=2.9.5",
+    "psycopg2cffi>=2.9.0",
+    "pytest>=8.0.0",
+    "requests>=2.31.0",
+    "redshift_connector>=2.1.0",
+    "flake8>=7.0.0",
+]
+test = [
+    "alembic>=1.13.0",
+    "packaging>=20.0",
+    "psycopg2>=2.9.5",
+    "psycopg2cffi>=2.9.0",
+    "pytest>=8.0.0",
+    "requests>=2.31.0",
+    "redshift_connector>=2.1.0",
+]
+docs = [
+    "sphinx>=7.0.0",
+    "numpydoc>=1.6.0",
+    "psycopg2-binary>=2.9.5",
+    "jinja2>=3.1.0",
+]
+
+[tool.pytest.ini_options]
+addopts = "--doctest-modules --doctest-glob='*.rst' --ignore=setup.py --ignore=docs/conf.py"
+doctest_optionflags = "NORMALIZE_WHITESPACE"
+
+[tool.uv]
+dev-dependencies = [
+    "alembic>=1.13.0",
+    "packaging>=20.0",
+    "psycopg2>=2.9.5",
+    "psycopg2cffi>=2.9.0",
+    "pytest>=8.0.0",
+    "requests>=2.31.0",
+    "redshift_connector>=2.1.0",
+    "flake8>=7.0.0",
+]
